@@ -75,6 +75,39 @@ return 0;
 }
 
 
+/* read.c 8*/
+
+#include "stdio.h"
+
+
+int main() {
+
+	FILE *fptr = fopen("fil.text","r");
+    FILE *fptr1 = fopen("fi.text","w");
+
+	int i =1;
+	char single,bin;
+
+	while ( (single = fgetc(fptr) ) != EOF) {
+
+
+
+
+            if(single=='0'){
+                   fprintf(fptr1,"\t %c B1b%d is not set\n",single,i);
+                   printf("\t %c B1b%d is not set\n",single,i);
+		      }
+            else{
+                   fprintf(fptr1,"\t %c B1b%d is  set\n",single,i);
+                   printf("\t %c B1b%d is  set\n",single,i);
+        }
+i++;
+}
+	fclose(fptr);
+	fclose(fptr1);
+    return 0;
+	}
+
 
 
 
