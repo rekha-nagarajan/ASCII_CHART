@@ -1,12 +1,27 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
 #include <math.h>
-#include <string.h>
-
+#include<string.h>
 int main()
 {
+char data[1000];
+int i;
+FILE *fPtr;
+FILE *fPtr1;
+FILE *fPtr2;
+
+fPtr=fopen("fil.text","w");
+if(fPtr==NULL)
+    {
+     printf("Unable to create file.\n");
+     exit(1);
+    }
+else{
+
     char hex[24];
     long decimal,place;
-    int val, len,bin,j=0,binary=0;
+    int val, len,bin,j=0;
+    int binary=0;
     decimal = 0;
     place = 1;
 
@@ -34,49 +49,34 @@ int main()
         decimal += val * pow(16, len);
         len--;
     }
-
-
-
-
-
-    while(decimal > 0)
+    int n,c,k;
+    for(c=16;c>=0;c--)
     {
-        int rem = decimal % 2;
-
-        binary = (rem * place) + binary;
-
-        decimal /= 2;
-
-        place *= 10;
+        k=decimal>>c;
+        binary=k;
+    if(binary & 1)
+            {
+            fprintf(fPtr,"1");
+         printf("1");
+         }
+        else{
+            fprintf(fPtr,"0");
+             printf("0");}
     }
 
 
 
-printf("Hexadecimal number = %s\n", hex);
 
-printf("Binary number = %d\n", binary);
-
-while(j=8){
-while(binary>0){
-
-        bin=binary%10;
-        binary=binary/10;
-
-        if(bin==0){
-            printf("B1b%d  is not set\n",j);
-        }
-        else{
-            printf("B1b%d is set\n",j);
-        }
-
- j--;
-}
-
-
-}
-
+fclose(fPtr);
 
 
 return 0;
 }
+}
+
+
+
+
+
+
 
